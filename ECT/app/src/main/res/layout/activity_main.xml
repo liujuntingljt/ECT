@@ -60,7 +60,7 @@
                 android:id="@+id/act_main_img2"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:src="@drawable/fanyi" />
+                android:src="@drawable/fanyioff" />
 
             <TextView
                 android:id="@+id/act_main_tv2"
@@ -86,7 +86,7 @@
                 android:id="@+id/act_main_img3"
                 android:layout_width="22dp"
                 android:layout_height="22dp"
-                android:src="@drawable/fuxi" />
+                android:src="@drawable/fuxioff" />
 
             <TextView
                 android:id="@+id/act_main_tv3"
@@ -110,7 +110,7 @@
                 android:id="@+id/act_main_img4"
                 android:layout_width="22dp"
                 android:layout_height="22dp"
-                android:src="@drawable/wd" />
+                android:src="@drawable/wdoff" />
 
             <TextView
                 android:id="@+id/act_main_tv4"
