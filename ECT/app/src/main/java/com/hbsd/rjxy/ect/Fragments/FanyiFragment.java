@@ -1,99 +1,157 @@
 package com.hbsd.rjxy.ect.Fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.GridView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.hbsd.rjxy.ect.R;
+import com.hbsd.rjxy.ect.activity.ChineseSearchActivity;
+import com.hbsd.rjxy.ect.activity.EnglishSearchActivity;
+import com.hbsd.rjxy.ect.activity.SentenceTranslateActivity;
+import com.hbsd.rjxy.ect.base.BaseFragment;
+import com.hbsd.rjxy.ect.util.HttpUtil;
+import com.hbsd.rjxy.ect.util.SharedPreUtil;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link FanyiFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link FanyiFragment#newInstance} factory method to
- * create an instance of this fragment.
+ * 翻译
  */
-public class FanyiFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+public class FanyiFragment extends BaseFragment {
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
 
-    private OnFragmentInteractionListener mListener;
+    private static String HISTORY_KEY = "history";
+    private View v;
+    private EditText et;
+    private TextView tv;
+    private GridView gv;
+    private List<String> histories = new ArrayList<>();
+    private ArrayAdapter<String> adapter;
+    private Button clear;
 
-    public FanyiFragment() {
-        // Required empty public constructor
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        v = inflater.inflate(R.layout.fragment_fanyi, null);
+        initView();
+        getHistory();
+        return v;
     }
 
     /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment FanyiFragment.
+     * 获取搜索历史
      */
-    // TODO: Rename and change types and number of parameters
-    public static FanyiFragment newInstance(String param1, String param2) {
-        FanyiFragment fragment = new FanyiFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+    private void getHistory() {
+        List<String> data = SharedPreUtil.getList(getActivity(), "history");
+        if (data != null) {
+            histories.addAll(data);
         }
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_fanyi, container, false);
+    public void initView() {
+        clear = findButById(v, R.id.frag_fa_clear);
+        et = findEtbyId(v, R.id.frag_fa_et);
+        tv = findTextViewbyId(v, R.id.frag_fa_tv);
+        gv = (GridView) v.findViewById(R.id.frag_fa_gv);
+
+        /**
+         * 清空历史
+         */
+        clear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (histories == null || histories.size() == 0) {
+                    Toast.makeText(getActivity(), "暂无搜索历史", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                SharedPreUtil.clearHistory(getActivity());
+                histories.clear();
+                adapter.notifyDataSetChanged();
+            }
+        });
+
+        /**
+         * 搜索事件
+         */
+        et.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if(!HttpUtil.isNetworkAvailable(getActivity())){
+                    showToast("当前网络不可用");
+                    return false;
+                }
+                if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                    String searchStr = et.getText().toString().trim();
+                    search(searchStr);
+                }
+                return false;
+            }
+        });
+        /**
+         * 长句翻译
+         */
+        tv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), SentenceTranslateActivity.class));
+            }
+        });
+        adapter = new ArrayAdapter<>(getActivity(), R.layout.text_his, histories);
+        gv.setAdapter(adapter);
+        gv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                search(histories.get(position));
+            }
+        });
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
+    private void search(String searchStr) {
+        if (searchStr.equals("")) {
+            showToast("请输入文本");
+            return;
         }
-    }
-
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
-    }
-
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+        if (searchStr.contains(" ")) {
+            showToast("搜索词中不允许空格哦~");
+            return;
+        }
+        if (histories.contains(searchStr)) {
+            histories.remove(searchStr);
+            histories.add(searchStr);
+        } else {
+            histories.add(searchStr);
+        }
+        adapter.notifyDataSetChanged();
+        SharedPreUtil.saveHistory(getActivity(), HISTORY_KEY, histories);
+        ((InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE)).
+                hideSoftInputFromWindow(et.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+        et.setText("");
+        Intent intent = new Intent();
+        intent.putExtra("searchStr", searchStr);
+        int length = (searchStr.charAt(0) + "").getBytes().length;
+        if (length == 1) {
+            intent.setClass(getActivity(), EnglishSearchActivity.class);
+        } else if (length == 3) {
+            intent.setClass(getActivity(), ChineseSearchActivity.class);
+        }
+        startActivity(intent);
     }
 }

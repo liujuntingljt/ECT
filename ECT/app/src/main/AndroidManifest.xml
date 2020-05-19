@@ -20,8 +20,11 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat.NoActionBar"
-        tools:replace="android:theme">
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+        tools:replace="android:theme"
+       >
+        <!--android:theme="@style/AppTheme"-->
+
         <activity android:name=".activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -42,6 +45,15 @@
             </intent-filter>-->
         </activity>
 
+        <activity android:name=".activity.SentenceTranslateActivity" />
+        <activity android:name=".activity.ChineseSearchActivity" />
+        <activity android:name=".activity.EnglishSearchActivity" />
+
+
+
+
+
+        <!--短信-->
         <activity
             android:name="com.mob.tools.MobUIShell"
             android:configChanges="keyboardHidden|orientation|screenSize"
@@ -54,6 +66,24 @@
         <meta-data
             android:name="Mob-AppSecret"
             android:value="399675145fa8623f9c76e7763bd1ba41" />
+
+        <!--qq-->
+        <activity
+            android:name="com.tencent.tauth.AuthActivity"
+            android:noHistory="true"
+            android:launchMode="singleTask" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="tencent1110450575" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.tencent.connect.common.AssistActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="behind"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
     </application>
 
 </manifest>
