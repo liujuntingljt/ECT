@@ -8,9 +8,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-/**
- * Created by Administrator on 2016/10/18.
- */
+
 public abstract class BaseActivity extends FragmentActivity {
 
     public TextView findTextViewById(int id) {

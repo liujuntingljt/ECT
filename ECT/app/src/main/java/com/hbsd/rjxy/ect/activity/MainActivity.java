@@ -23,7 +23,8 @@ import java.util.List;
 
 
 
-public class MainActivity extends BaseActivity implements View.OnClickListener {
+public class
+MainActivity extends BaseActivity implements View.OnClickListener {
 
     private LinearLayout lin1, lin2, lin3, lin4;
     private ViewPager viewpager;

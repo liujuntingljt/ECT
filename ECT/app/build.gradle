@@ -1,5 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'org.greenrobot.greendao'
+//短信验证码
+apply plugin: 'com.mob.sdk'
 android {
     compileSdkVersion 28
     defaultConfig {
@@ -16,6 +18,13 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+}
+
+// 在MobSDK的扩展中注册SMSSDK的相关信息
+MobSDK {
+    appKey '2f4c35dbc5a94'
+    appSecret '399675145fa8623f9c76e7763bd1ba41'
+    SMSSDK {}
 }
 
 dependencies {
