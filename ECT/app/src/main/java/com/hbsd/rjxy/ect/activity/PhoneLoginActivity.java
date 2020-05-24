@@ -278,7 +278,7 @@ public class PhoneLoginActivity extends AppCompatActivity implements IPhoneLogin
                     @Override
                     public void onComplete(Object response) {
                         //todo 用户qq授权登录成功之后，传到后台登录数据，拿到uid，存储qq相关信息
-                        Log.e(TAG, "登录成功" + response.toString());
+                        Log.e(TAG, "QQ登录授权成功" + response.toString());
                         //QQ登录成功后将用户信息进行存储进行存储
                         JSONObject object = (JSONObject) response;
                         JSONObject qqInfor=new JSONObject();
@@ -350,7 +350,7 @@ public class PhoneLoginActivity extends AppCompatActivity implements IPhoneLogin
                 e.printStackTrace();
             }
             editor.commit();
-            SharedPreferences sp=getSharedPreferences(Constant.PUBLISH_SP_NAME,MODE_PRIVATE);
+            //SharedPreferences sp=getSharedPreferences(Constant.PUBLISH_SP_NAME,MODE_PRIVATE);
 //            sp.edit().putString(Constant.REMIND_PUBLISH_ONCE,"NEEDREMIND").commit();
             Intent intent=new Intent();
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
