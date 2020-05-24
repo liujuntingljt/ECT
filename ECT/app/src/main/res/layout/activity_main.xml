@@ -42,7 +42,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="3dp"
                 android:gravity="center"
-                android:text="秒句"
+                android:text="妙句"
                 android:textColor="@color/orange"
                 android:textSize="13sp" />
 
