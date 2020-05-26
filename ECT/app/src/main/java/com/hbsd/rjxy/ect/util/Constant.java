@@ -39,7 +39,11 @@ public class Constant {
     public static final String LOGIN_USERNAME="username";//登录后用户的用户名
     public static final String LOGIN_HEADPATH="userHeadPath";//登录后用户的头像地址无地址为"null"
 
+    public static String KEYFROM = "dancizhushou00";//5425BFA77E53C82A6E0F30E888941BBE
 
+    public static String KEY = "2102848981";
+
+    public static String CIBAKEY = "5425BFA77E53C82A6E0F30E888941BBE";
 
 
 

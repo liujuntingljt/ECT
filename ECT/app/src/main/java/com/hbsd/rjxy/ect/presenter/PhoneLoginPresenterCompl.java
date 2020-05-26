@@ -73,9 +73,9 @@ public class PhoneLoginPresenterCompl implements IPhoneLoginPresenter{
                 JSONObject jsonObject= null;
                 try {
                     jsonObject = new JSONObject(content);
-                    String result=jsonObject.getString("result");//1.密码正确(附带返回用户id)
+                    String result=jsonObject.getString("result");//1.授权成功，用户id存储正确(附带返回用户id)
                     if (result.equals("true")){
-                        iPhoneLoginView.onLoginResult(result,jsonObject);
+                        iPhoneLoginView.onQQLoginResult(result,jsonObject);
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();

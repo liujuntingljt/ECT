@@ -72,17 +72,17 @@ public class HttpMethods {
     }
 
     public Observable<SentenceBean> sentenceTransLate(String q) {
-        return service1.sentenceTransLate(Constants.KEYFROM, Constants.KEY, "data", "json", "1.1", q);
+        return service1.sentenceTransLate(Constant.KEYFROM, Constant.KEY, "data", "json", "1.1", q);
     }
     public Observable<EveryDayWords> getEveryDayWords(){
         return  service2.getEveryDayWords();
     }
 
     public Observable<EnglishBean> searchEnglish(String w){
-        return service3.englishSearch(w,Constants.CIBAKEY,"json");
+        return service3.englishSearch(w,Constant.CIBAKEY,"json");
     }
     public Observable<ChineseBean> searchChinese(String w){
-        return service3.chineseSearch(w,Constants.CIBAKEY,"json");
+        return service3.chineseSearch(w,Constant.CIBAKEY,"json");
     }
 
 }
