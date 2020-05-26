@@ -1,6 +1,7 @@
 package com.hbsd.rjxy.ect.Fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
@@ -9,10 +10,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.hbsd.rjxy.ect.R;
+import com.hbsd.rjxy.ect.activity.SetClockActivity;
 import com.hbsd.rjxy.ect.base.BaseFragment;
 import com.hbsd.rjxy.ect.entity.EveryDayWords;
 import com.hbsd.rjxy.ect.util.HttpMethods;
@@ -33,6 +36,7 @@ public class MiaojuFragment extends BaseFragment {
     private ImageView img, voice;
     private TextView content1, content2;
     private MediaPlayer mp;
+    private LinearLayout llSetClock;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -78,12 +82,19 @@ public class MiaojuFragment extends BaseFragment {
         voice = findImageViewbyId(v, R.id.frag_tui_voice);
         content1 = findTextViewbyId(v, R.id.frag_tui_content1);
         content2 = findTextViewbyId(v, R.id.frag_tui_content2);
+        llSetClock=v.findViewById(R.id.ll_setclock);
         mp = new MediaPlayer();
-
         mp.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
             public void onPrepared(MediaPlayer mp) {
                 mp.start();
+            }
+        });
+        llSetClock.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(getActivity(), SetClockActivity.class);
+                startActivity(intent);
             }
         });
     }

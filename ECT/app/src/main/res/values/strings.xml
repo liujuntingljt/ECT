@@ -8,4 +8,15 @@
     <string name="close">close</string>
     <string name="title_activity_self_fragment">SelfFragment</string>
     <string name="service">&lt;&lt;服务协议&gt;&gt;与&lt;&lt;隐私政策&gt;&gt;</string>
+
+    <string name="hello">Hello World, EX06_10</string>
+    <string name="str_button1">设置闹钟</string>
+    <string name="str_button2">删除闹钟</string>
+    <string name="str_title2">重复响起的闹钟</string>
+    <string name="str_title3">豆豆闹钟一</string>
+    <string name="str_title4">豆豆闹钟二</string>
+    <string name="str_default">目前无设置</string>
+    <string name="str_text1">开始时间</string>
+    <string name="str_text2">重复响起的闹钟</string>
+    <string name="str_text3">秒</string>
 </resources>

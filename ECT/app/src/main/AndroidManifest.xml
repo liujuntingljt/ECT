@@ -21,10 +21,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-        tools:replace="android:theme"
-       >
-        <!--android:theme="@style/AppTheme"-->
-
+        tools:replace="android:theme">
+        <!-- android:theme="@style/AppTheme" -->
         <activity android:name=".activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -32,28 +30,26 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".activity.ShowProblemActivity"></activity>
+        <activity android:name=".activity.ShowProblemActivity" />
         <activity android:name=".activity.ShowServiceActivity" />
         <activity android:name=".activity.LoginProblemsActivity" />
         <activity android:name=".activity.PasswordLoginActivity" />
         <activity android:name=".activity.PhoneLoginActivity">
-            <!--<intent-filter>
+
+            <!--
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>-->
+            </intent-filter>
+            -->
         </activity>
-
         <activity android:name=".activity.SentenceTranslateActivity" />
         <activity android:name=".activity.ChineseSearchActivity" />
         <activity android:name=".activity.EnglishSearchActivity" />
 
 
-
-
-
-        <!--短信-->
+        <!-- 短信 -->
         <activity
             android:name="com.mob.tools.MobUIShell"
             android:configChanges="keyboardHidden|orientation|screenSize"
@@ -67,15 +63,17 @@
             android:name="Mob-AppSecret"
             android:value="399675145fa8623f9c76e7763bd1ba41" />
 
-        <!--qq-->
+        <!-- qq -->
         <activity
             android:name="com.tencent.tauth.AuthActivity"
-            android:noHistory="true"
-            android:launchMode="singleTask" >
+            android:launchMode="singleTask"
+            android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
+
                 <data android:scheme="tencent1110450575" />
             </intent-filter>
         </activity>
@@ -84,6 +82,17 @@
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="behind"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+        <!-- 闹钟 -->
+        <receiver
+            android:name=".activity.CallAlarm"
+            android:process=":remote" />
+
+        <activity
+            android:name=".activity.AlarmAlert"
+            android:label="@string/app_name"></activity>
+
+        <activity android:name=".activity.SetClockActivity"></activity>
     </application>
 
 </manifest>

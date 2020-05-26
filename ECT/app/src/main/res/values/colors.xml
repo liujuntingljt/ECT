@@ -46,4 +46,10 @@
     <color name="app_color_blue">#7D7DFF</color>
     <color name="app_color_9b">#9b9b9b</color>
     <color name="app_color_e0ff6100">#E0FF6100</color>
+
+    <drawable name="white">#FFFFFFFF</drawable>
+    <drawable name="other">#FF00FFF0</drawable>
+    <drawable name="black">#000000</drawable>
+    <drawable name="blue">#0000FF</drawable>
+    <drawable name="red">#FF0000</drawable>
 </resources>
