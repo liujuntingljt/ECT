@@ -47,7 +47,10 @@
         <activity android:name=".activity.SentenceTranslateActivity" />
         <activity android:name=".activity.ChineseSearchActivity" />
         <activity android:name=".activity.EnglishSearchActivity" />
-
+        <activity android:name=".activity.WordBookActivity"></activity>
+        <activity android:name=".activity.PlanActivity"></activity>
+        <activity android:name=".activity.DictionaryActivity"></activity>
+        <activity android:name=".activity.PlanPracticeActivity"></activity>
 
         <!-- 短信 -->
         <activity
@@ -62,6 +65,8 @@
         <meta-data
             android:name="Mob-AppSecret"
             android:value="399675145fa8623f9c76e7763bd1ba41" />
+
+
 
         <!-- qq -->
         <activity
@@ -83,6 +88,7 @@
             android:screenOrientation="behind"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
 
+
         <!-- 闹钟 -->
         <receiver
             android:name=".activity.CallAlarm"
@@ -90,9 +96,8 @@
 
         <activity
             android:name=".activity.AlarmAlert"
-            android:label="@string/app_name"></activity>
-
-        <activity android:name=".activity.SetClockActivity"></activity>
+            android:label="@string/app_name" />
+        <activity android:name=".activity.SetClockActivity" />
     </application>
 
 </manifest>

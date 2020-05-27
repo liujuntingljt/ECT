@@ -74,8 +74,7 @@
             android:layout_height="wrap_content"
             android:text="定个小铃"
             android:textColor="#000"
-            android:textSize="25sp"/>
+            android:textSize="20sp"/>
     </LinearLayout>
-
 
 </LinearLayout>
