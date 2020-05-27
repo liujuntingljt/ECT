@@ -3,10 +3,14 @@ package com.hbsd.rjxy.ect.Fragments;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.hbsd.rjxy.ect.R;
 
@@ -24,6 +28,14 @@ public class WdFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
+    public View view;
+    public ImageView wg_imgmore;
+    public ImageView wg_imghead;
+    public TextView wg_textname;
+    public ImageView wg_imgto;
+    public TextView wg_textpro;
+    public TextView wg_textnumemail;
+    public ProgressBar progressBar;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -64,8 +76,13 @@ public class WdFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         // Inflate the layout for this fragment
+
+
+        //view =inflater.inflate(R.layout.fragment_wd,container,false);
         return inflater.inflate(R.layout.fragment_wd, container, false);
+
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -97,4 +114,16 @@ public class WdFragment extends Fragment {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        //生成控件定义
+        /*wg_imghead =(ImageView)  view.findViewById(R.id.imghead);
+        wg_textname =(TextView)  view.findViewById(R.id.textname);
+        wg_imgto =(ImageView)  view.findViewById(R.id.imgto);
+        wg_textpro =(TextView)  view.findViewById(R.id.textpro);
+        wg_textnumemail =(TextView) view. findViewById(R.id.textnumemail);
+        progressBar= (ProgressBar)  view.findViewById(R.id.prog);*/
+    }
+
 }

@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="personalc_1">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:padding">0dp</item>
+        <item name="android:background">#569afd</item>
+        <item name="android:gravity">left</item>
+    </style>
+
+    <style name="personalc_4">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">0dp</item>
+        <item name="android:layout_centerInParent">true</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:textSize">16dp</item>
+    </style>
+    <style name="personalc_2">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">186dp</item>
+        <item name="android:layout_below">@+id/personalc_widget_1</item>
+        <item name="android:background">#fff</item>
+    </style>
+    <style name="personalc_5">
+        <item name="android:layout_width">74dp</item>
+        <item name="android:layout_height">74dp</item>
+        <item name="android:layout_marginTop">44dp</item>
+        <item name="android:padding">0dp</item>
+        <item name="android:src">@drawable/headimg</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:gravity">left</item>
+    </style>
+    <style name="personalc_6">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">7dp</item>
+        <item name="android:layout_below">@+id/imghead</item>
+        <item name="android:padding">0dp</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:textSize">14dp</item>
+    </style>
+    <style name="personalc_10">
+        <item name="android:layout_width">156dp</item>
+        <item name="android:layout_height">16dp</item>
+        <item name="android:layout_marginTop">4dp</item>
+        <item name="android:layout_below">@+id/textname</item>
+        <item name="android:layout_centerHorizontal">true</item>
+    </style>
+    <style name="personalc_7">
+        <item name="android:layout_width">137dp</item>
+        <item name="android:layout_height">16dp</item>
+        <item name="android:layout_marginTop">4dp</item>
+    </style>
+    <style name="personalc_8">
+        <item name="android:layout_width">16dp</item>
+        <item name="android:layout_height">16dp</item>
+        <item name="android:layout_marginLeft">3dp</item>
+        <item name="android:layout_toRightOf">@+id/prog</item>
+        <item name="android:layout_marginTop">0dp</item>
+        <item name="android:padding">0dp</item>
+        <item name="android:src">@drawable/more</item>
+        <item name="android:gravity">left</item>
+    </style>
+    <style name="personalc_9">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/_6sdp</item>
+        <item name="android:layout_below">@+id/personalc_widget_10</item>
+        <item name="android:padding">0dp</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:textSize">@dimen/_12sdp</item>
+    </style>
+    <style name="personalc_11">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">@dimen/_62sdp</item>
+        <item name="android:layout_below">@+id/personalc_widget_2</item>
+        <item name="android:background">#468ef9</item>
+    </style>
+    <style name="personalc_13">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">0dp</item>
+        <item name="android:layout_centerInParent">true</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:textSize">@dimen/_16sdp</item>
+    </style>
+    <style name="personalc_12">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_below">@+id/personalc_widget_11</item>
+        <item name="android:background">#569afd</item>
+    </style>
+    <style name="personalc_14">
+        <item name="android:layout_width">@dimen/_272sdp</item>
+        <item name="android:layout_height">@dimen/_39sdp</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:background">@drawable/oneborderb</item>
+    </style>
+    <style name="personalc_15">
+        <item name="android:layout_width">@dimen/_16sdp</item>
+        <item name="android:layout_height">@dimen/_16sdp</item>
+        <item name="android:layout_marginLeft">@dimen/_6sdp</item>
+        <item name="android:src">@drawable/fuxioff</item>
+        <item name="android:layout_centerVertical">true</item>
+    </style>
+    <style name="personalc_16">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">@dimen/_14sdp</item>
+        <item name="android:layout_toRightOf">@+id/img15</item>
+        <item name="android:padding">0dp</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:textSize">@dimen/_14sdp</item>
+    </style>
+    <style name="personalc_17">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">@dimen/_183sdp</item>
+        <item name="android:layout_toRightOf">@+id/text16</item>
+        <item name="android:background">@drawable/personalredbg</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:textSize">@dimen/_14sdp</item>
+    </style>
+    <style name="personalc_18">
+        <item name="android:layout_width">@dimen/_272sdp</item>
+        <item name="android:layout_height">@dimen/_39sdp</item>
+        <item name="android:layout_marginTop">0dp</item>
+        <item name="android:layout_below">@+id/relemail</item>
+        <item name="android:padding">0dp</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:gravity">left</item>
+    </style>
+    <style name="personalc_19">
+        <item name="android:layout_width">@dimen/_16sdp</item>
+        <item name="android:layout_height">@dimen/_16sdp</item>
+        <item name="android:layout_marginLeft">@dimen/_6sdp</item>
+        <item name="android:padding">0dp</item>
+        <item name="android:src">@drawable/setting</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:gravity">left</item>
+    </style>
+    <style name="personalc_20">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">@dimen/_14sdp</item>
+        <item name="android:layout_toRightOf">@+id/img19</item>
+        <item name="android:padding">0dp</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:textSize">@dimen/_14sdp</item>
+    </style>
+</resources>
