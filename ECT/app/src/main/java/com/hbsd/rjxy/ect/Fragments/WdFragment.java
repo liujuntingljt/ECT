@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -86,28 +87,37 @@ public class WdFragment extends BaseFragment {
          wg_imghead =(ImageView)  view.findViewById(R.id.imghead);
          wg_textname =(TextView)  view.findViewById(R.id.textname);
          wg_textReset=(TextView) view.findViewById(R.id.text20);
-         wg_textReset.setOnClickListener(new View.OnClickListener() {
-             @Override
-             public void onClick(View v) {
 
-             }
-         });
     }
 
     public void setUser(){
-        SharedPreferences sharedPreferences = this.getActivity().getSharedPreferences(Constant.LOGIN_SP_NAME, MODE_PRIVATE);
+        final SharedPreferences sharedPreferences = this.getActivity().getSharedPreferences(Constant.LOGIN_SP_NAME, MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
+        wg_textReset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.clear();
+                editor.commit();
+
+                Log.e("清除结果","成功");
+
+            }
+        });
         if(sharedPreferences.getString("uid",null)!=null){
 
             String uid = sharedPreferences.getString("uid",null);
-            String userName=sharedPreferences.getString("username","请登录");
+            final String userName=sharedPreferences.getString("username","狐狸不熬夜");
             final String userImg=sharedPreferences.getString("userHeadPath","http://www.pc6.com/public/images/azlogo.png");
             getActivity().runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
+                    wg_textname.setText(userName);
                     Glide.with(getActivity()).load(userImg).into(wg_imghead);
                 }
             });
+
         }
         else{
             Intent intent=new Intent();

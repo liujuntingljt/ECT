@@ -16,15 +16,15 @@
         <TextView android:id="@+id/textname" style="@style/personalc_6" android:text="请登录">
         </TextView>
         <RelativeLayout android:id="@+id/personalc_widget_10" style="@style/personalc_10">
-            <ProgressBar android:id="@+id/prog" android:layout_width="137dp"
-                android:layout_height="160dp"
-                style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
-                android:progress="75">
-            </ProgressBar>
-            <ImageView android:id="@+id/imgto" style="@style/personalc_8">
-            </ImageView>
+            <!--<ProgressBar android:id="@+id/prog" android:layout_width="137dp"-->
+                <!--android:layout_height="160dp"-->
+                <!--style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"-->
+                <!--android:progress="75">-->
+            <!--</ProgressBar>-->
+            <!--<ImageView android:id="@+id/imgto" style="@style/personalc_8">-->
+            <!--</ImageView>-->
         </RelativeLayout>
-        <TextView android:id="@+id/textpro" style="@style/personalc_9" android:text="资料完整度为75%，请继续完善">
+        <TextView android:id="@+id/textpro" style="@style/personalc_9" android:text="今天也要好好背单词呀">
         </TextView>
     </RelativeLayout>
     <RelativeLayout android:id="@+id/personalc_widget_11" style="@style/personalc_11">
@@ -39,6 +39,7 @@
             <TextView android:id="@+id/text20" style="@style/personalc_20" android:text="消除缓存">
             </TextView>
         </RelativeLayout>
+
     </RelativeLayout>
 
 
