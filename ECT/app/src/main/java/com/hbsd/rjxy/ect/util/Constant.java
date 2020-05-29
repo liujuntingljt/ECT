@@ -11,7 +11,7 @@ import android.Manifest;
 public class Constant {
 
 
-    public static String ip="192.168.100.109:8080";
+    public static String ip="192.168.0.105:8080";
 
     public static String[] TAB_STRING = {"首页","圈子","我的猫","直播","我的"}; //tabhost中的名词
 

@@ -13,7 +13,7 @@
         <com.hbsd.rjxy.ect.util.RoundImageViewByXfermode android:id="@+id/imghead" style="@style/personalc_5"
             android:layout_gravity="bottom|center_horizontal" app:type="circle"  android:scaleType="centerCrop">
         </com.hbsd.rjxy.ect.util.RoundImageViewByXfermode>
-        <TextView android:id="@+id/textname" style="@style/personalc_6" android:text="李三三">
+        <TextView android:id="@+id/textname" style="@style/personalc_6" android:text="请登录">
         </TextView>
         <RelativeLayout android:id="@+id/personalc_widget_10" style="@style/personalc_10">
             <ProgressBar android:id="@+id/prog" android:layout_width="137dp"
@@ -28,18 +28,11 @@
         </TextView>
     </RelativeLayout>
     <RelativeLayout android:id="@+id/personalc_widget_11" style="@style/personalc_11">
-        <TextView android:id="@+id/text13" style="@style/personalc_13" android:text="个人简历">
+        <TextView android:id="@+id/text13" style="@style/personalc_13" android:text="小功能">
         </TextView>
     </RelativeLayout>
     <RelativeLayout android:id="@+id/personalc_widget_12" style="@style/personalc_12">
-        <RelativeLayout android:id="@+id/relemail" style="@style/personalc_14">
-            <ImageView android:id="@+id/img15" style="@style/personalc_15">
-            </ImageView>
-            <TextView android:id="@+id/text16" style="@style/personalc_16" android:text="复习计划">
-            </TextView>
-            <TextView android:id="@+id/textnumemail" style="@style/personalc_17" android:text="3">
-            </TextView>
-        </RelativeLayout>
+
         <RelativeLayout android:id="@+id/relset" style="@style/personalc_18">
             <ImageView android:id="@+id/img19" style="@style/personalc_19">
             </ImageView>
