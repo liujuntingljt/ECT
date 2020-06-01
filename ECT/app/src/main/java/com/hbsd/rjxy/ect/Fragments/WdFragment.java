@@ -14,9 +14,12 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
+
+import com.google.gson.Gson;
 import com.hbsd.rjxy.ect.R;
+import com.hbsd.rjxy.ect.activity.EditPwdWithoutOldActivity;
 import com.hbsd.rjxy.ect.activity.MainActivity;
 import com.hbsd.rjxy.ect.activity.PhoneLoginActivity;
 import com.hbsd.rjxy.ect.base.BaseFragment;
@@ -42,11 +45,13 @@ public class WdFragment extends BaseFragment {
     public ImageView wg_imghead;
     public TextView wg_textname;
     public TextView wg_textReset;
-
+    public TextView wg_textRelemail;
 
     private TextView wg_textFuxi;
 
+    private String username;
 
+    public Gson gson;
     public WdFragment() {
         // Required empty public constructor
     }
@@ -74,6 +79,8 @@ public class WdFragment extends BaseFragment {
         view =inflater.inflate(R.layout.fragment_wd,null);
         initView();
         setUser();
+
+        initEvent();
         return view;
 
     }
@@ -84,27 +91,21 @@ public class WdFragment extends BaseFragment {
 
     @Override
     public void initView() {
-         wg_imghead =(ImageView)  view.findViewById(R.id.imghead);
-         wg_textname =(TextView)  view.findViewById(R.id.textname);
-         wg_textReset=(TextView) view.findViewById(R.id.text20);
+        wg_imghead =(ImageView)  view.findViewById(R.id.imghead);
+        wg_textname =(TextView)  view.findViewById(R.id.textname);
+        wg_textReset=(TextView) view.findViewById(R.id.text20);
+        wg_textRelemail=view.findViewById(R.id.text16);
+
+
+
+        gson=new Gson();
 
     }
 
     public void setUser(){
         final SharedPreferences sharedPreferences = this.getActivity().getSharedPreferences(Constant.LOGIN_SP_NAME, MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        wg_textReset.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-                SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.clear();
-                editor.commit();
-
-                Log.e("清除结果","成功");
-
-            }
-        });
         if(sharedPreferences.getString("uid",null)!=null){
 
             String uid = sharedPreferences.getString("uid",null);
@@ -113,8 +114,12 @@ public class WdFragment extends BaseFragment {
             getActivity().runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    wg_textname.setText(userName);
-                    Glide.with(getActivity()).load(userImg).into(wg_imghead);
+                    wg_textname.setText(userName );
+                  // Glide.with(getActivity()).load(userImg).into(wg_imghead);
+                   //RequestOptions options = new RequestOptions().circleCrop();
+                   //Glide.with(getActivity()).load(userImg).into(wg_imghead);
+
+
                 }
             });
 
@@ -126,11 +131,93 @@ public class WdFragment extends BaseFragment {
         }
     }
 
-
+    public void refresh() {
+        setUser();
+    }
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
+
     }
+    public void initEvent(){
+        ButtonClickListener buttonClickListener=new ButtonClickListener();
+        wg_textRelemail.setOnClickListener(buttonClickListener);
+        wg_textReset.setOnClickListener(buttonClickListener);
+        wg_textname.setOnClickListener(buttonClickListener);
+    }
+    public class ButtonClickListener implements View.OnClickListener{
+
+        /**
+         * Called when a view has been clicked.
+         *
+         * @param v The view that was clicked.
+         */
+        @Override
+        public void onClick(View v) {
+            final SharedPreferences sharedPreferences = getActivity().getSharedPreferences(Constant.LOGIN_SP_NAME, MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            switch (v.getId()){
+                case R.id.textname:{
+                    if(wg_textname.getText().equals("请登录")){
+                        /*如果用户处于非登录*/
+                        Intent intent = new Intent(getActivity(), PhoneLoginActivity.class);
+                        startActivity(intent);
+                    }
+                    else{
+                        getActivity().runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Toast.makeText(getContext(),"已登录",Toast.LENGTH_SHORT);
+
+
+                            }
+                        });
+
+                    }
+                    break;
+                }
+                /*修改密码*/
+                case R.id.text16:{
+                    if (sharedPreferences.getString("uid",null)==null){
+                        /*如果用户处于非登录*/
+                        Intent intent = new Intent(getActivity(), PhoneLoginActivity.class);
+                        startActivity(intent);
+                    }
+                    else if(sharedPreferences.getString("hasPassword", "false").equals("false")){
+                        editor.putString("hasPassword","true");
+                        editor.commit();
+                        Intent intent=new Intent(getActivity(), EditPwdWithoutOldActivity.class);
+                        intent.putExtra("uid",sharedPreferences.getString("uid","null"));
+                        startActivity(intent);
+                    }
+                    else{
+                        editor.putString("hasPassword","true");
+                        editor.commit();
+                        Intent intent=new Intent(getActivity(), EditPwdWithoutOldActivity.class);
+                        intent.putExtra("uid",sharedPreferences.getString("uid","null"));
+                        startActivity(intent);
+                    }
+                    break;
+                }
+                /*清除缓存*/
+                case R.id.text20:{
+
+                    editor.clear();
+                    editor.commit();
+                    getActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            wg_textname.setText("请登录" );
+
+                        }
+                    });
+                    Log.e("清除结果","成功");
+                    break;
+                }
+            }
+        }
+    }
+
 
 }

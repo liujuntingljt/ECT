@@ -32,15 +32,23 @@
         </TextView>
     </RelativeLayout>
     <RelativeLayout android:id="@+id/personalc_widget_12" style="@style/personalc_12">
+        <RelativeLayout android:id="@+id/relemail" style="@style/personalc_14">
+            <ImageView android:id="@+id/img15" style="@style/personalc_15">
+            </ImageView>
+            <TextView android:id="@+id/text16" style="@style/personalc_16" android:text="修改密码">
+            </TextView>
 
+        </RelativeLayout>
         <RelativeLayout android:id="@+id/relset" style="@style/personalc_18">
             <ImageView android:id="@+id/img19" style="@style/personalc_19">
             </ImageView>
-            <TextView android:id="@+id/text20" style="@style/personalc_20" android:text="消除缓存">
+            <TextView android:id="@+id/text20" style="@style/personalc_20" android:text="清除缓存">
             </TextView>
         </RelativeLayout>
-
     </RelativeLayout>
+
+
+
 
 
 </RelativeLayout>

@@ -110,12 +110,13 @@ public class RoundImageViewByXfermode extends android.support.v7.widget.AppCompa
         {
             //拿到Drawable
             Drawable drawable = getDrawable();
-            //获取drawable的宽和高
-            int dWidth = drawable.getIntrinsicWidth();
-            int dHeight = drawable.getIntrinsicHeight();
+
 
             if (drawable != null)
             {
+                //获取drawable的宽和高
+                int dWidth = drawable.getIntrinsicWidth();
+                int dHeight = drawable.getIntrinsicHeight();
                 //创建bitmap
                 bitmap = Bitmap.createBitmap(getWidth(), getHeight(),
                         Bitmap.Config.ARGB_8888);
