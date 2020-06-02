@@ -6,7 +6,7 @@ android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.hbsd.rjxy.ect"
-        minSdkVersion 15
+        minSdkVersion 19
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
@@ -29,6 +29,7 @@ MobSDK {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+    //noinspection GradleCompatible
     implementation 'com.android.support:appcompat-v7:28.0.0'
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
     testImplementation 'junit:junit:4.12'
@@ -41,11 +42,16 @@ dependencies {
     api 'com.squareup.retrofit2:converter-gson:2.0.0-beta4'
     api 'com.squareup.retrofit2:adapter-rxjava:2.0.0-beta4'
     api 'com.squareup.okhttp3:logging-interceptor:3.1.2'
-    api 'com.github.bumptech.glide:glide:3.5.2'
+
     api 'com.android.support:support-v4:28.0.0'
     api 'org.greenrobot:greendao:3.2.2'
     api 'com.android.support:cardview-v7:28.0.0'
     api 'com.zhl.cbdialog:CBDialog:1.0.0'
+    implementation 'com.github.bumptech.glide:glide:4.7.1'
+
+    //七牛云sdk
+
+
 }
 
 //配置GreenDao代码生成路径

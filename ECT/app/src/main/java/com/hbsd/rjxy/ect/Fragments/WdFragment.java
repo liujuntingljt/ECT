@@ -1,9 +1,7 @@
 package com.hbsd.rjxy.ect.Fragments;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -12,18 +10,28 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.google.gson.Gson;
 import com.hbsd.rjxy.ect.R;
 import com.hbsd.rjxy.ect.activity.EditPwdWithoutOldActivity;
-import com.hbsd.rjxy.ect.activity.MainActivity;
 import com.hbsd.rjxy.ect.activity.PhoneLoginActivity;
 import com.hbsd.rjxy.ect.base.BaseFragment;
 import com.hbsd.rjxy.ect.util.Constant;
+//import com.hbsd.rjxy.ect.util.UploadUtils;
+//import com.luck.picture.lib.PictureSelector;
+//import com.luck.picture.lib.config.PictureConfig;
+//import com.luck.picture.lib.config.PictureMimeType;
+//import com.luck.picture.lib.entity.LocalMedia;
+//
+//import java.util.List;
+//
+//import pub.devrel.easypermissions.EasyPermissions;
+
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -49,9 +57,18 @@ public class WdFragment extends BaseFragment {
 
     private TextView wg_textFuxi;
 
-    private String username;
+    private String userName;
 
     public Gson gson;
+
+    String uid;
+    String userImg;
+//    private String qiNiuImgPath;
+//    private UploadUtils uploadUtils;
+//
+//    private boolean isEditedHead = false;
+//    private boolean isPrepared;
+
     public WdFragment() {
         // Required empty public constructor
     }
@@ -106,22 +123,41 @@ public class WdFragment extends BaseFragment {
         final SharedPreferences sharedPreferences = this.getActivity().getSharedPreferences(Constant.LOGIN_SP_NAME, MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
+
         if(sharedPreferences.getString("uid",null)!=null){
 
-            String uid = sharedPreferences.getString("uid",null);
-            final String userName=sharedPreferences.getString("username","狐狸不熬夜");
-            final String userImg=sharedPreferences.getString("userHeadPath","http://www.pc6.com/public/images/azlogo.png");
-            getActivity().runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    wg_textname.setText(userName );
-                  // Glide.with(getActivity()).load(userImg).into(wg_imghead);
-                   //RequestOptions options = new RequestOptions().circleCrop();
-                   //Glide.with(getActivity()).load(userImg).into(wg_imghead);
+            uid = sharedPreferences.getString("uid",null);
+            userName=sharedPreferences.getString("username","狐狸不熬夜");
+             userImg=sharedPreferences.getString("userHeadPath","null");
+            Log.e("展示的headde url",userImg);
+            if(userImg!=null){
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        wg_textname.setText(userName );
+                      // Glide.with(getActivity()).load(userImg).into(wg_imghead);
+                       RequestOptions options = new RequestOptions().circleCrop();
+                       Glide.with(getActivity()).load(userImg).apply(options).into(wg_imghead);
 
 
-                }
-            });
+                    }
+                });
+            }
+            else{
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        wg_textname.setText(userName );
+                        // Glide.with(getActivity()).load(userImg).into(wg_imghead);
+                        RequestOptions options = new RequestOptions().circleCrop();
+                        Glide.with(getActivity()).load("https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1404513126,3004416245&fm=26&gp=0.jpg").apply(options).into(wg_imghead);
+
+
+                    }
+                });
+
+
+            }
 
         }
         else{
@@ -145,6 +181,7 @@ public class WdFragment extends BaseFragment {
         wg_textRelemail.setOnClickListener(buttonClickListener);
         wg_textReset.setOnClickListener(buttonClickListener);
         wg_textname.setOnClickListener(buttonClickListener);
+        wg_imghead.setOnClickListener(buttonClickListener);
     }
     public class ButtonClickListener implements View.OnClickListener{
 
@@ -209,15 +246,24 @@ public class WdFragment extends BaseFragment {
                         @Override
                         public void run() {
                             wg_textname.setText("请登录" );
+                            RequestOptions options = new RequestOptions().circleCrop();
+                            Glide.with(getActivity()).load("https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1404513126,3004416245&fm=26&gp=0.jpg").apply(options).into(wg_imghead);
 
                         }
                     });
                     Log.e("清除结果","成功");
                     break;
                 }
+                case R.id.imghead:{
+                    //更换头像
+                    //
+                  //  isEditedHead = true;
+                    //askPermission();
+                }
             }
         }
     }
+
 
 
 }
